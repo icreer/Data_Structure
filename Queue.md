@@ -146,6 +146,72 @@ q.EnQueue(12)
 q.DeQueue()
 
 ```
-### Know how to implement a queue using a stack data structure and vis versa 
+### Design Circular Queue
+```python
+class CircularQueue():
+    def __init__(self,size):
+        self.size = size
+        self.queue = [None for i in range(size)]
+        self.front = self.rear = -1
+    def enqueue(self,data):
+        if (self.rear + 1) % self.size == self.front:
+            print("Queue is Full")
+        else if self.front == -1:
+            self.front = 0
+            self.rear = 0
+            self.queue[self.rear] = data
+        else:
+            self.rear = (self.rear + 1) % self.size
+            self.queue[self.rear] = data
+    def dequeue(self):
+        if self.front == -1:
+            print("Queue is Empty")
+        else if self.front == self.rear:
+            temp = self.queue[self.front]
+            self.front = -1
+            self.rear = -1
+            return temp
+        else:
+            temp = self.queue[self.front]
+            self.front = (self.front + 1) % self.size
+            return temp
+    
+    def display(self):
+        if self.front == -1:
+            print("Queue is Empty")
+        else if self.rear >= self.front:
+            print("Elements in the circular queue are: ")
+            for i in range(self.front, self.rear + 1):
+                print(self.queue[i], end = " ")
+            print()
+        else: 
+            print("Elements in Circular Queue are: ")
 
-## Example problem
+            for i in range(self.front, self.size):
+                print(self.queue[i], end = " ")
+            for i in range(0, self.rear + 1):
+                print(self.queue[i], end = " ")
+            print()
+
+        if (self.rear +1) % self.size == self.front:
+            print("Queue is Full")
+
+cq = CircularQueue(6)
+cq.enqueue(14)
+cq.enqueue(56)
+cq.enqueue(19)
+cq.enqueue(-9)
+cq.display()
+cq.dequeue()
+cq.dequeue()
+cq.enqueue(7)
+cq.display()
+
+```
+## Example Problem
+### 
+
+## Student Problem
+### Unscrable Key Problem
+So you want to send a file over the internet so you want to do it succurly. So you incrpt it. So you have a set of 5 numbers that needs to be set in correct number to uniccript the file. 
+Here is the set of numbers you got 18,56,89,2,6 it needs to be 89,2,56,6,18. Write a program to convert the two set over numbers between eachother.
