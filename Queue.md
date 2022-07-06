@@ -56,13 +56,13 @@ q.get()
 ```
 
 ### What kind of errors are common when using the data structure?
-
+If a queue has a max size you can max out a queue size and cause an error
 ### What is the difference between a Stack and a queue?
 A Stack Is last-in, first-out as a queue is first in , first out
 ### Why are the difference between a stack and queue important?
 The difference between gives us to comnication between a computer and how we design software depening on our need.
 ### What is and what are the benefits of a Circular Queue?
-
+A Circular Queue is a version of a queue where teh last emement of the queue is connected to the first element of the queue forming a circle
 ## Skills
 
 ### Sorting an Queue
