@@ -107,3 +107,30 @@ print(i)
 ```
 
 ## Problems
+### Eample Problem
+Lets see the code to find the differnect between two sets with out using the difference() function
+```python
+def difference(s1,s2):
+    save = set()
+    for i in s1:
+        if i not in s2:
+            save.add(i)
+    return(save)
+
+s1 = set([1,2,3,4])
+s2 = set([2,4])
+print(difference(s1,s2))
+
+
+```
+### Student Problem 
+You need need to remove the intersection between two sets with out using the python .difference_update()
+```python
+def difference_update(s1,s2):
+
+
+s1 = set([1,2,3,4,5])
+s2 = set([4,5,6,7,8])
+
+
+``` 
