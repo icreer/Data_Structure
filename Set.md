@@ -64,6 +64,7 @@ Set
 Do to the fact that sets are unordered there for there is no index. So in python loop though it using a for loop or us the in keyword
 
 ## Skills
+
 ###	Check if a set is a subset or a superset
 ```python
 s1 = set([2,6,87,9,5,78])

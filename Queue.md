@@ -63,6 +63,7 @@ A Stack Is last-in, first-out as a queue is first in , first out
 The difference between gives us to comnication between a computer and how we design software depening on our need.
 ### What is and what are the benefits of a Circular Queue?
 A Circular Queue is a version of a queue where teh last emement of the queue is connected to the first element of the queue forming a circle
+
 ## Skills
 
 ### Sorting an Queue
