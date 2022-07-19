@@ -8,12 +8,62 @@ A Tree is like a linked list with nodes that are connected together by pointers.
 The Advantages of a tree are that a tree reflects the data structural connections, tree is used for hierarchy, it offers an efficient search, it offers efficient insertion procedure, and tress are flexible.
 
 ###	What is the performance of the data structure (Big O)?
+Now the performance of a tree is depednent on many factors. In general if a tree is balance  then the the performance is O(log N).
 
 ###	What kind of problem can be solved using the data structure?
+Trees are really powerful. Some of the problem that a tree can be used to in storing hierarchecal data, create faster searching through the data, and can help with indexing in a database. With the amount of differne trees out there probalbly tree out there that could solve your problem if it is dealing with data.
 
 ###	How would the data structure be used in Python (recursion)?
+Here is the basic of a Binary Search Tree
+```python
+class BST:
+    class Node:
+
+        def __init__(self, data):
+           
+       
+            self.data = data
+            self.left = None
+            self.right = None
+
+    def __init__(self):
+       
+        self.root = None
+
+    def insert(self, data):
+        
+        if self.root is None:
+            self.root = BST.Node(data)
+        else:
+            self._insert(data, self.root)  # Start at the root 
+   
+    def _insert(self, data, node):
+       
+        if node.data == data:
+            return True
+        if data < node.data:
+            # The data belongs on the left side.
+            if node.left is None:
+                # We found an empty spot
+                node.left = BST.Node(data)
+           
+            else:
+                # Need to keep looking.  Call _insert
+                # recursively on the left sub-tree.
+                self._insert(data, node.left)
+        else:
+            # The data belongs on the right side.
+            if node.right is None:
+                # We found an empty spot
+                node.right = BST.Node(data)
+            else:
+                # Need to keep looking.  Call _insert
+                # recursively on the right sub-tree.
+                self._insert(data, node.right)
+```
 
 ###	What kind of errors are common when using the data structure?
+Well a common error that is that the tree is unbalance and there is a recerson error in the set up of said tree.
 
 ###	What are the different types of trees?
 There a ton of different types of trees but here are some of the major gouping of trees:
@@ -40,11 +90,166 @@ Well they don't nessaly need to be balanceed but if a tree is not balance it can
 ## Skills
 
 ###	Know how to get the height of a tree
-###	Figure out the number of nodes at each level of a tree
+```python
+class Node:
+    def _init_(self,data):
+        self.data = data
+        self.left = None
+        self.right = None
 
+def hight(node):
+    if node is None:
+        return 0
+    else:
+         lhight = hight(node.left)
+         rhight = hight(node.right)
+
+         if lhight > rhight:
+            return lhight+1
+        else:
+            return rhight+1
+
+root = Node(50)
+root.left = Node(75)
+root.right = Node(25)
+root.left.left = Node(85)
+root.left.right = Node(65)
+root.right.left = Node(35)
+root.right.right = Node(15)
+root.left.left.left = Node(95)
+root.left.left.right = Node(80)
+root.left.right.left = Node(70)
+root.left.right.right = Node(55)
+root.right.left.left = Node(40)
+root.right.left.right = Node(30)
+root.right.right.left = Node(20)
+root.right.right.right = Node(10)
+root.left.left.left.left = Node(100)
+root.left.left.left.right = Node(90)
+root.left.right.right.right = Node(60)
+root.right.left.left.left = Node(45)
+root.right.right.right.right = Node(5)
+
+print(f"Height of the tree is {height(root)}")
+```
+###	Figure out the number of nodes at each level of a tree
+```python
+class Node:
+    def __init__(self, key):
+        self.left = None
+        self.right = None
+        self.val = key
+
+def left_height(node):
+    ht = 0
+    while(node):
+        ht += 1
+        node = node.left
+         
+    return ht
+
+def right_height(node):
+    ht = 0
+    while(node):
+        ht += 1
+        node = node.right
+        
+    return ht
+
+def TotalNodes(root):
+   
+  # Base case
+    if(root == None):
+        return 0
+       
+     # Find the left height and the
+    # right heights
+    lh = left_height(root)
+    rh = right_height(root)
+     
+     # If left and right heights are
+    # equal return 2^height(1<<height) -1
+    if(lh == rh):
+        return (1 << lh) - 1
+       
+     # Otherwise, recursive call
+    return 1 + TotalNodes(root.left) + TotalNodes(root.right)
+
+root = Node(50)
+root.left = Node(75)
+root.right = Node(25)
+root.left.left = Node(85)
+root.left.right = Node(65)
+root.right.left = Node(35)
+root.right.right = Node(15)
+root.left.left.left = Node(95)
+root.left.left.right = Node(80)
+root.left.right.left = Node(70)
+root.left.right.right = Node(55)
+root.right.left.left = Node(40)
+root.right.left.right = Node(30)
+root.right.right.left = Node(20)
+root.right.right.right = Node(10)
+root.left.left.left.left = Node(100)
+root.left.left.left.right = Node(90)
+root.left.right.right.right = Node(60)
+root.right.left.left.left = Node(45)
+root.right.right.right.right = Node(5)
+
+print(TotalNodes(root))
+```
 ## Problem
 
-###	Convert a tree into a set of linked lists
+###	Convert a Binary Tree into a set of linked lists
+```python
+class Node:
+    def _init_(self, val):
+        self.right = None
+        self.data = val
+        self.left = None
+class Binary_Tree_to_Double_Linked_list:
+    def _init_(self):
+        self.head = None
+        self.tail = None
+
+    def convert(self, root):
+        if root is None:
+            return
+
+        self.convert(root.left)
+
+        node = root
+        if self.head is None:
+            self.head = node
+        else:
+            self.tail.right = node
+            node.left = self.tail
+        
+        self.tail = node
+
+        self.convert(root.right)
+        return self.head
+
+def BTEDLL(root):
+    converter = Binary_Tree_to_Double_Linked_list()
+    return converter.convert(root)
+
+def print_dll(head):
+    while head is not None:
+        print(head.data, end = " ")
+        head = head.right
+
+root = Node(10)
+root.left = Node(13)
+root.right = Node(17)
+root.left.left = Node(56)
+root.left.right = Node(57)
+root.right.left = Node(60)
+
+head = BTEDLL(root)
+
+print_dll(head)
+```
 ###	You are working on collison in a game. You deciede to use a K-d tree to sort through all the corrdinats you have for all your entities.
 ### Now used the check collision to use the K-d tree
 ```python
