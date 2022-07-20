@@ -136,4 +136,6 @@ s2 = set([4,5,6,7,8])
 
 print(difference_update(s1,s2))
 # {1,2,3}
-``` 
+
+```
+[Solution](Set_Student_Solution.py) 
