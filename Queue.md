@@ -72,7 +72,7 @@ from queue import Queue
 def find_min(q, sIndex):
     minI = -1
     minv = 999999
-    for i in range(n):
+    for i in range(sIndex):
         curr = q.queue[0]
         q.get()
 
@@ -96,7 +96,7 @@ def put_in_Rear(q, minI):
 
 def sortQueue(q):
     for i in range(1, q.qsize()+1):
-        min_index = find_min(q, q.size() - i)
+        min_index = find_min(q, q.qsize() - i)
         put_in_Rear(q, min_index)
 
 q = Queue()
@@ -107,6 +107,8 @@ q.put(3)
 q.put(23)
 
 sortQueue(q)
+for s in range(q.qsize()):
+    print(q.get())
 ```
 ### Know how to use a queue with a linked list
 
@@ -157,7 +159,7 @@ class CircularQueue():
     def enqueue(self,data):
         if (self.rear + 1) % self.size == self.front:
             print("Queue is Full")
-        else if self.front == -1:
+        elif self.front == -1:
             self.front = 0
             self.rear = 0
             self.queue[self.rear] = data
@@ -167,7 +169,7 @@ class CircularQueue():
     def dequeue(self):
         if self.front == -1:
             print("Queue is Empty")
-        else if self.front == self.rear:
+        elif self.front == self.rear:
             temp = self.queue[self.front]
             self.front = -1
             self.rear = -1
@@ -180,7 +182,7 @@ class CircularQueue():
     def display(self):
         if self.front == -1:
             print("Queue is Empty")
-        else if self.rear >= self.front:
+        elif self.rear >= self.front:
             print("Elements in the circular queue are: ")
             for i in range(self.front, self.rear + 1):
                 print(self.queue[i], end = " ")
@@ -210,9 +212,40 @@ cq.display()
 
 ```
 ## Example Problem
-### 
+This is a problem you have a Doubly LinkedList and you make it into a queue
+```python
 
+
+```
 ## Student Problem
-### Unscrable Key Problem
-So you want to send a file over the internet so you want to do it succurly. So you incrpt it. So you have a set of 5 numbers that needs to be set in correct number to uniccript the file. 
-Here is the set of numbers you got 18,56,89,2,6 it needs to be 89,2,56,6,18. Write a program to convert the two set over numbers between eachother.
+You have two queue. Both are just numbers. Now you need to find the mathmatical opration set that shows if thay past a  test or not. 
+```python
+def test(key,q):
+    key_number1 = 0
+    key_number2 = 0
+    key_final_number = key_number1 / key_number2
+
+    q_number1 = 0
+    q_number2 = 0
+    q_final_number = q_number1 / q_number2
+
+
+    if q_final_number != key_final_number and key_final_number != 0:
+        return True
+    else:
+        return False
+key = [23,4,5,23,10]
+
+q1 = [12,17,3,4,-9]
+
+q2 = [3,6,7,12,15]
+
+q3 = [50,-8,-10,-14,-27]
+
+print(test(key,q1))
+# True
+print(test(key,q2))
+# False
+print(test(key,q3))
+#True
+```
