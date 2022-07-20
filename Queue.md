@@ -212,35 +212,81 @@ cq.display()
 
 ```
 ## Example Problem
-This is a problem you have a Doubly LinkedList and you make it into a queue
+Math with a queue
 ```python
+    from queue import Queue
 
+    def sum_of_queue(q):
+        value = 0
+        for s in range(5):
+            value+=q.queue[0]
+            q.get()
+        return value
+
+    q1 = Queue()
+    q1.put(12)
+    q1.put(17)
+    q1.put(3)
+    q1.put(4)
+    q1.put(9)
+
+    print(sum_of_queue(q1))
 
 ```
 ## Student Problem
 You have two queue. Both are just numbers. Now you need to find the mathmatical opration set that shows if thay past a  test or not. 
 ```python
+from queue import Queue
+
+
 def test(key,q):
+    did_it_pass = False
     key_number1 = 0
     key_number2 = 0
-    key_final_number = key_number1 / key_number2
+    
 
     q_number1 = 0
     q_number2 = 0
-    q_final_number = q_number1 / q_number2
 
+   # your code here
 
-    if q_final_number != key_final_number and key_final_number != 0:
-        return True
-    else:
-        return False
-key = [23,4,5,23,10]
+    try:
+        key_final_number = key_number1 / key_number2
+        q_final_number = q_number1 / q_number2
+        if key_final_number == q_final_number and key_final_number != 0:
+            did_it_pass = True
+    except:
+        i = 0
+    
+        return did_it_pass
+key = Queue()
+key.put(int(23))
+key.put(4)
+key.put(5)
+key.put(23)
+key.put(-10)
 
-q1 = [12,17,3,4,-9]
+q1 = Queue()
+q1.put(12)
+q1.put(17)
+q1.put(3)
+q1.put(4)
+q1.put(9)
 
-q2 = [3,6,7,12,15]
+q2 = Queue()
+q2.put(3)
+q2.put(6)
+q2.put(7)
+q2.put(12)
+q2.put(15)
 
-q3 = [50,-8,-10,-14,-27]
+q3 = Queue()
+q3.put(50)
+q3.put(-8)
+q3.put(-10)
+q3.put(14)
+q3.put(-27)
+
 
 print(test(key,q1))
 # True
@@ -249,3 +295,4 @@ print(test(key,q2))
 print(test(key,q3))
 #True
 ```
+[Solution](Queue_Student_Problem_Solution.py)
